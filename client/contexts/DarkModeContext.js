@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useMemo } from 'react';
 
 const DarkModeContext = createContext();
 
@@ -12,7 +12,7 @@ export function DarkModeProvider({ children }) {
   const toggleSwitch = () => setIsDarkMode(!isDarkMode);
 
   // Wrap the value in useMemo to avoid unnecessary re-renders
-  const value = useMemo(() => ({ isDarkMode, toggleSwitch }), [isDarkMode]);
+  const value = useMemo(() => ({ isDarkMode, toggleSwitch }), [isDarkMode, toggleSwitch]);
 
   return (
     <DarkModeContext.Provider value={value}>
