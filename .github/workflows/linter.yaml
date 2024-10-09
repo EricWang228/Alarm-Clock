@@ -22,4 +22,4 @@ jobs:
       - name: Run eslint
         run: |
           cd client
-          npm run lint
+          npm run lint -- --fix
