@@ -11,9 +11,16 @@ export function DarkModeProvider({ children }) {
 
   const toggleSwitch = () => setIsDarkMode(!isDarkMode);
 
+  // Wrap the value in useMemo to avoid unnecessary re-renders
+  const value = useMemo(() => ({ isDarkMode, toggleSwitch }), [isDarkMode]);
+
   return (
-    <DarkModeContext.Provider value={{ isDarkMode, toggleSwitch }}>
+    <DarkModeContext.Provider value={value}>
       {children}
     </DarkModeContext.Provider>
   );
 }
+
+DarkModeProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
