@@ -1,4 +1,5 @@
 name: Linter
+# Only when a push is sent to the main branch is the linter script run 
 on: 
   push: 
     branches: 
